@@ -1,7 +1,7 @@
 {
   "name": "osama",
   "version": "0.1.0",
-  "homepage": "https://osamaahmed.github.io/Shoppinng-2",
+  "homepage": "https://osamaahmed26.github.io/Shoppinng-2",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -16,14 +16,14 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
