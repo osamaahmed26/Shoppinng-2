@@ -1,0 +1,103 @@
+/* تخصيص الجذر للـ Light/Dark Mode */
+:root {
+  --bg-color: #f0f0f0;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --input-bg: #fff;
+  --border-color: #ccc;
+  --primary: #17b978;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #f0f0f0;
+  --input-bg: #2a2a2a;
+  --border-color: #444;
+}
+
+/* توسيط الصفحة بالكامل */
+.signup-container {
+  min-height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+/* تصميم الكارت */
+.signup-card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  transition: background 0.3s ease;
+}
+
+/* عنوان التسجيل */
+.signup-title {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* تنسيق الحقول */
+.signup-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  margin-bottom: 18px;
+  transition: border 0.2s ease;
+}
+
+.signup-input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 5px rgba(23, 185, 120, 0.5);
+}
+
+/* زر التسجيل */
+.signup-button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+  background: #139e67;
+  transform: scale(1.02);
+}
+
+/* التذييل */
+.signup-footer {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.signup-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+

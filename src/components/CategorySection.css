@@ -1,0 +1,11 @@
+.category-img {
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+}
+
+.category-img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

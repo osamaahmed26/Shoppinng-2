@@ -1,0 +1,55 @@
+nav .container-fluid {
+  background-color: #232323;
+  text-align: center;
+  padding: 20px 6px;
+}
+
+.navbar-brand {
+  color: #da0078;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #da0078 !important;
+  text-decoration: none !important;
+  background: none !important;
+  transform: scale(1.08);
+}
+
+
+.navbar-brand span {
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* تأثير الـ hover على كلمة span في كل الحالات */
+.navbar-brand span:hover {
+  color: #071ff3 !important;
+  cursor: pointer;
+}
+
+/* في الوضع الداكن، الكلمة تكون أزرق مع توهج */
+body.dark-mode .navbar-brand span {
+  color: #071ff3 !important;
+}
+
+.nav-link {
+  display: inline-block;
+  color: #000000 !important; /* أسود */
+}
+
+.nav-link:hover {
+  transform: scale(1.15);
+  color: #17b978 !important;
+  text-shadow: 0 0 5px #17b978;
+}
+
+body.dark-mode nav .form-control {
+  background-color: white !important;
+  color: black !important;
+  border-color: #ccc !important;
+}
+
+body.dark-mode nav .form-control::placeholder {
+  color: #666 !important;
+}
