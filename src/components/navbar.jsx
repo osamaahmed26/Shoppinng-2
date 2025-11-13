@@ -1,26 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
-import './navbar.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+import "./navbar.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function Navbar({ setSearchTerm }) {
-  const { cartItems, favorites } = useContext(CartContext);
+  const context = useContext(CartContext);
+
+  // ✅ Safe access if context is not yet loaded
+  const cartItems = context?.cartItems || [];
+  const favorites = context?.favorites || [];
+
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
+    return localStorage.getItem("theme") === "dark";
   });
 
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const body = document.body;
     if (darkMode) {
-      body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
+      body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
     } else {
-      body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
+      body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
@@ -29,7 +34,11 @@ export default function Navbar({ setSearchTerm }) {
   };
 
   return (
-    <nav className={`navbar fixed-top navbar-expand-lg shadow-sm ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
+    <nav
+      className={`navbar fixed-top navbar-expand-lg shadow-sm ${
+        darkMode ? "navbar-dark bg-dark" : "navbar-light bg-light"
+      }`}
+    >
       <div className="container">
         <Link className="navbar-brand fw-bold" to="/">
           Shopping <span className="text-primary">Land</span>
@@ -42,17 +51,22 @@ export default function Navbar({ setSearchTerm }) {
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">الرئيسية</Link>
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/signup">التسجيل</Link>
+              <Link className="nav-link" to="/signup">
+                Sign Up
+              </Link>
             </li>
           </ul>
 
@@ -60,7 +74,7 @@ export default function Navbar({ setSearchTerm }) {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="ابحث عن منتج..."
+              placeholder="Search for a product..."
               aria-label="Search"
               value={searchInput}
               onChange={(e) => {
@@ -72,15 +86,15 @@ export default function Navbar({ setSearchTerm }) {
           </div>
 
           <Link to="/cart" className="btn btn-outline-primary me-2">
-            🛒 السلة ({cartItems.length})
+             Cart ({cartItems.length})
           </Link>
 
           <Link to="/favorites" className="btn btn-outline-danger me-2">
-            ❤️ المفضلة ({favorites.length})
+             Favorites ({favorites.length})
           </Link>
 
           <button onClick={toggleDarkMode} className="btn btn-outline-secondary">
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? "☀️" : "🌙"}
           </button>
         </div>
       </div>

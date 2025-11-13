@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Signup.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Signup.css";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -18,27 +18,27 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert('كلمات المرور غير متطابقة');
+      alert("Passwords do not match");
       return;
     }
-    console.log('بيانات التسجيل:', formData);
+    console.log("Signup data:", formData);
     setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     });
   };
 
   return (
     <div className="signup-container">
       <div className="signup-card">
-        <h2 className="signup-title">✨ إنشاء حساب جديد</h2>
+        <h2 className="signup-title">✨ Create a New Account</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="الاسم الكامل"
+            placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -47,7 +47,7 @@ export default function Signup() {
           <input
             type="email"
             name="email"
-            placeholder="البريد الإلكتروني"
+            placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
             required
@@ -56,7 +56,7 @@ export default function Signup() {
           <input
             type="password"
             name="password"
-            placeholder="كلمة المرور"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
@@ -65,16 +65,18 @@ export default function Signup() {
           <input
             type="password"
             name="confirmPassword"
-            placeholder="تأكيد كلمة المرور"
+            placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
             className="signup-input"
           />
-          <button type="submit" className="signup-button">تسجيل</button>
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
         </form>
         <p className="signup-footer">
-          لديك حساب بالفعل؟ <Link to="/login">تسجيل الدخول</Link>
+          Already have an account? <Link to="/login">Log in</Link>
         </p>
       </div>
     </div>

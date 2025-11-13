@@ -1,0 +1,146 @@
+:root {
+  --light-bg: #ffffff;
+  --dark-bg: #121212;
+  --light-card: #f8f9fa;
+  --dark-card: #1e1e1e;
+  --light-text: #222;
+  --dark-text: #f0f0f0;
+  --accent: #0d6efd;
+  --danger: #dc3545;
+  --warning: #ffc107;
+}
+
+/* 🧾 الحاوية الأساسية */
+.cart-container {
+  transition: all 0.3s ease;
+}
+
+.cart-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* 🌗 الوضع الليلي */
+body.dark-mode .cart-container {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode .cart-table {
+  background-color: var(--dark-card);
+  color: var(--dark-text) !important;
+  border-color: #333;
+}
+
+body.dark-mode th {
+  background-color: #222;
+  color: #fff;
+}
+
+body.dark-mode td {
+  color: #e0e0e0;
+}
+
+/* 🧩 الجدول */
+.cart-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.cart-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px;
+}
+
+.cart-table td {
+  background-color: inherit;
+  border: none;
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.cart-table tr {
+  transition: background 0.2s ease;
+}
+
+.cart-table tr:hover td {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 🌙 في الوضع الليلي */
+body.dark-mode .cart-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* 🖼️ الصور */
+.cart-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+body.dark-mode .cart-img {
+  background-color: #2a2a2a;
+}
+
+/* ➕➖ الكمية */
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.qty-btn:hover {
+  background: var(--warning);
+}
+
+.qty {
+  font-weight: 600;
+}
+
+/* 🗑️ زر الحذف */
+.delete-btn {
+  background: var(--danger);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
+}
+
+/* ✅ الفوتر */
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.cart-actions button {
+  min-width: 180px;
+}

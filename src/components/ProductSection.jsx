@@ -1,73 +1,83 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import { Link } from 'react-router-dom';
-import './ProductSection.css';
+import React, { useContext } from "react";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
+import "./ProductSection.css";
 
-export default function ProductSection({ searchTerm = '' }) {
-  const [products, setProducts] = useState([]);
-  const { cartItems, favorites, toggleCart, toggleFavorite } = useContext(CartContext);
+export default function ProductSection({ products = [] }) {
+  const { cartItems = [], favorites = [], toggleCart, toggleFavorite } =
+    useContext(CartContext) || {};
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(setProducts)
-      .catch(console.error);
-  }, []);
+  if (!products.length) {
+    return (
+      <div className="text-center my-5">
+        <p className="text-muted fs-5">No products available to display 😔</p>
+      </div>
+    );
+  }
 
-  // تصفية المنتجات حسب البحث
-  const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const isInCart = (id) => cartItems.some((item) => item.id === id);
+  const isFavorite = (id) => favorites.some((item) => item.id === id);
 
   return (
-    <div className="container py-5">
-      <h2 className="text-center mb-4">المنتجات</h2>
+    <div className="container my-5">
+      <h2 className="text-center mb-4 fw-bold section-title">🛍️ Products</h2>
+
       <div className="row g-4">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map(product => (
-            <div key={product.id} className="col-sm-6 col-md-4 col-lg-3">
-              <div className="card product-card h-100">
-                <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
-                  <img src={product.image} alt={product.title} className="card-img-top p-3" />
+        {products.map((product) => (
+          <div className="col-md-4 col-lg-3" key={product.id}>
+            <div className="product-card text-center">
+              <div className="img-container">
+                <Link to={`/product/${product.id}`}>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="product-img"
+                  />
                 </Link>
-                <div className="card-body d-flex flex-column">
-                  <h6 className="card-title">{product.title.slice(0, 40)}...</h6>
-                  <p className="text-muted mb-1">${product.price}</p>
-                  <div className="btn-actions">
-                    <button
-                      className={`btn btn-cart ${
-                        cartItems.some(item => item.id === product.id)
-                          ? 'btn-primary'
-                          : 'btn-outline-primary'
-                      }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleCart(product);
-                      }}
-                    >
-                      🛒
-                    </button>
-                    <button
-                      className={`btn btn-fav ${
-                        favorites.some(item => item.id === product.id)
-                          ? 'btn-danger'
-                          : 'btn-outline-danger'
-                      }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleFavorite(product);
-                      }}
-                    >
-                      ❤️
-                    </button>
-                  </div>
+
+                <div className="hover-actions">
+                  <button
+                    className={`hover-btn cart-btn ${
+                      isInCart(product.id) ? "active" : ""
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleCart(product);
+                    }}
+                  >
+                    <FaCartPlus className="me-2" />
+                    {isInCart(product.id) ? "Added to Cart" : "Add to Cart"}
+                  </button>
+
+                  <button
+                    className={`hover-btn fav-btn ${
+                      isFavorite(product.id) ? "active" : ""
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleFavorite(product);
+                    }}
+                  >
+                    <FaHeart />
+                  </button>
                 </div>
               </div>
+
+              <div className="product-info mt-3">
+                <Link
+                  to={`/product/${product.id}`}
+                  className="text-decoration-none"
+                >
+                  <h6 className="product-title text-truncate">
+                    {product.title}
+                  </h6>
+                </Link>
+                <p className="product-price">${product.price}</p>
+              </div>
             </div>
-          ))
-        ) : (
-          <div className="text-center text-muted">لا يوجد نتائج مطابقة</div>
-        )}
+          </div>
+        ))}
       </div>
     </div>
   );
