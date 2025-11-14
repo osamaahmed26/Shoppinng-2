@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Shoppinng-Land/static/css/main.bc548c6e.css",
-    "main.js": "/Shoppinng-Land/static/js/main.c974ab11.js",
+    "main.js": "/Shoppinng-Land/static/js/main.a9d0cea0.js",
     "static/media/makeup.jpg": "/Shoppinng-Land/static/media/makeup.10c783abcf5d23334fb9.jpg",
     "static/media/banner_tablet_new.png": "/Shoppinng-Land/static/media/banner_tablet_new.efe2b23080125eaa9ca9.png",
     "static/media/shoes.jpg": "/Shoppinng-Land/static/media/shoes.6f4a1035ac611ff5ae43.jpg",
@@ -9,10 +9,10 @@
     "static/media/clothes.jpg": "/Shoppinng-Land/static/media/clothes.dbd6745952c7e25381c4.jpg",
     "index.html": "/Shoppinng-Land/index.html",
     "main.bc548c6e.css.map": "/Shoppinng-Land/static/css/main.bc548c6e.css.map",
-    "main.c974ab11.js.map": "/Shoppinng-Land/static/js/main.c974ab11.js.map"
+    "main.a9d0cea0.js.map": "/Shoppinng-Land/static/js/main.a9d0cea0.js.map"
   },
   "entrypoints": [
     "static/css/main.bc548c6e.css",
-    "static/js/main.c974ab11.js"
+    "static/js/main.a9d0cea0.js"
   ]
 }
